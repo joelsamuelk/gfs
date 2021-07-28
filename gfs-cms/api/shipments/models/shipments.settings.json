@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "shipments",
+  "info": {
+    "name": "shipments"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "vessel": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

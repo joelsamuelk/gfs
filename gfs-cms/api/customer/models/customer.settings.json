@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "customers",
+  "info": {
+    "name": "customer"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "enumeration",
+      "enum": [
+        "Tropical_fruits",
+        "Gfs_sarl_reunion",
+        "Orange_fraiche",
+        "Mkm_solution",
+        "Cao",
+        "Caudex"
+      ],
+      "required": true
+    },
+    "shipments": {
+      "collection": "shipments",
+      "via": "customers",
+      "dominant": true
+    }
+  }
+}
