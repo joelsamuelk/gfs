@@ -1,7 +1,3 @@
-$('.interactive-menu-button a').click(function() {
-  $(this).toggleClass('active');
-});
-
 var scroll = new SmoothScroll('a[href*="#"]');
 
 $('.more-btn').click(function() {
@@ -24,7 +20,7 @@ function slickify(){
             breakpoint: 991,
             settings: "unslick"
         }
-      ] 
+      ]
   });
   $(".slick-next").text("");
   $(".slick-next").addClass("icofont-long-arrow-right");
@@ -36,8 +32,8 @@ slickify();
 $(window).resize(function(){
   var $windowWidth = $(window).width();
   if ($windowWidth > 991) {
-      slickify(); 
-      $('#blog-btn').addClass('hide-me');  
+      slickify();
+      $('#blog-btn').addClass('hide-me');
   }else if($windowWidth < 991) {
     $('#blog-btn').removeClass('hide-me');
   }
@@ -51,11 +47,4 @@ $('#blog-btn').click(function() {
   }else {
     $("#blog-btn").text("Show More Stories.");
   }
-});
-
-$(document).ready(function() {
-  setTimeout(function(){
-    $('body').addClass('loaded');
-    $('h1').css('color','#222222');
-  }, 3000);
 });

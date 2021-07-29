@@ -517,7 +517,11 @@
       "Shipments": {
         "required": [
           "id",
-          "vessel"
+          "vessel",
+          "Port_Of_Load",
+          "Departure",
+          "Arrival",
+          "Status"
         ],
         "properties": {
           "id": {
@@ -525,6 +529,108 @@
           },
           "vessel": {
             "type": "string"
+          },
+          "Port_Of_Load": {
+            "type": "string"
+          },
+          "Container_No": {
+            "type": "string"
+          },
+          "Departure": {
+            "type": "string",
+            "format": "date"
+          },
+          "Arrival": {
+            "type": "string",
+            "format": "date"
+          },
+          "Status": {
+            "type": "string",
+            "enum": [
+              "Loaded",
+              "In_Transit",
+              "Discharged",
+              "Gated_Out"
+            ]
+          },
+          "customers": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "name"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string",
+                  "enum": [
+                    "Tropical_fruits",
+                    "Gfs_sarl_reunion",
+                    "Orange_fraiche",
+                    "Mkm_solution",
+                    "Cao",
+                    "Caudex"
+                  ]
+                },
+                "shipments": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "shipment": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string",
+                "enum": [
+                  "Dakahlia",
+                  "Idea_Fruit",
+                  "Fruit_secure",
+                  "Fruitways",
+                  "Zest_Fruit",
+                  "Into_asia",
+                  "Jaguar",
+                  "Kalinex_Fruit",
+                  "Wadi_Group"
+                ]
+              },
+              "suppliers": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           },
           "published_at": {
             "type": "string",
@@ -534,10 +640,46 @@
       },
       "NewShipments": {
         "required": [
-          "vessel"
+          "vessel",
+          "Port_Of_Load",
+          "Departure",
+          "Arrival",
+          "Status"
         ],
         "properties": {
           "vessel": {
+            "type": "string"
+          },
+          "Port_Of_Load": {
+            "type": "string"
+          },
+          "Container_No": {
+            "type": "string"
+          },
+          "Departure": {
+            "type": "string",
+            "format": "date"
+          },
+          "Arrival": {
+            "type": "string",
+            "format": "date"
+          },
+          "Status": {
+            "type": "string",
+            "enum": [
+              "Loaded",
+              "In_Transit",
+              "Discharged",
+              "Gated_Out"
+            ]
+          },
+          "customers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "shipment": {
             "type": "string"
           },
           "published_at": {

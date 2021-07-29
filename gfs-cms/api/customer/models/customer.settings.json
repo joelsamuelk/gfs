@@ -24,8 +24,8 @@
       "required": true
     },
     "shipments": {
-      "collection": "shipments",
       "via": "customers",
+      "collection": "shipments",
       "dominant": true
     }
   }

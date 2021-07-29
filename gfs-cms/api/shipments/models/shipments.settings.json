@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "shipments",
   "info": {
-    "name": "shipments"
+    "name": "shipments",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -14,6 +15,39 @@
     "vessel": {
       "type": "string",
       "required": true
+    },
+    "Port_Of_Load": {
+      "type": "string",
+      "required": true
+    },
+    "Container_No": {
+      "type": "string"
+    },
+    "Departure": {
+      "type": "date",
+      "required": true
+    },
+    "Arrival": {
+      "type": "date",
+      "required": true
+    },
+    "Status": {
+      "type": "enumeration",
+      "enum": [
+        "Loaded",
+        "In_Transit",
+        "Discharged",
+        "Gated_Out"
+      ],
+      "required": true
+    },
+    "customers": {
+      "collection": "customer",
+      "via": "shipments"
+    },
+    "shipment": {
+      "via": "suppliers",
+      "model": "supplier"
     }
   }
 }
