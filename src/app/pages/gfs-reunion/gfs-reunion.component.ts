@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'src/app/cookie.service';
+import axios from 'axios';
 
 @Component({
   selector: 'app-gfs-reunion',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GfsReunionComponent implements OnInit {
 
-  constructor() { }
+  _jwtBearer: string | null;
 
-  ngOnInit(): void {
+  constructor(private cookieService: CookieService) {
+    this._jwtBearer = null;
+   }
+
+  async ngOnInit(): Promise<any> {
+    
+    if(! await this.cookieService.verifyUser()){
+      console.log("REDIRECT ME!!!!!");
+    }
+    
   }
 
 }

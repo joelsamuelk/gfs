@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'src/app/cookie.service';
 
 import axios from 'axios';
 
@@ -11,16 +12,27 @@ export class LoginComponent implements OnInit {
   users = [];
   error = null;
 
-  constructor() { }
+  constructor(private cookieService: CookieService) { }
 
   ngOnInit(): void {
   }
 
   login(email: string, password: string): boolean {
-    alert(email + `` + password);
-    // this.authService.login(email, password).subscribe((resp) => {
-    //   console.log(resp);
-    // });
+    axios.post('http://localhost:1337/auth/local', {
+      identifier: email,
+      password: password,
+    })
+    .then(response => {
+      // console.log('User profile', response.data.user);
+      // console.log('User token', response.data.jwt);
+
+      this.cookieService.createCookie('__jwtBearer', response.data.jwt, 30);
+      this.cookieService.createCookie('__authUser', JSON.stringify(response.data.user), 30);
+    })
+    .catch(error => {
+      console.log('An error occurred:', error.response);
+      return false;
+    });
 
     return true;
   }
