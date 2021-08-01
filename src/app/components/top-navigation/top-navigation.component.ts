@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'src/app/cookie.service';
+import { User } from 'src/app/models/users';
+import { UserProfileComponent } from 'src/app/pages/user-profile/user-profile.component';
 
 @Component({
   selector: 'app-top-navigation',
@@ -7,10 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopNavigationComponent implements OnInit {
   classApplied = false;
+  user: User | undefined;
 
-  constructor() { }
+  constructor(private cookieService: CookieService) {
+   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<any> {
+    if(! await this.cookieService.verifyUser()){
+      console.log("Show login button");
+
+      return;
+    }
+
+    //const userData = JSON.parse(this.cookieService.readCookie('__authUser')) || '{}';
+    this.user = JSON.parse('');
   }
 
   onMenuClick(): void {

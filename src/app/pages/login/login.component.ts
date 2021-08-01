@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'src/app/cookie.service';
+import { Router } from '@angular/router';
 
 import axios from 'axios';
 
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   users = [];
   error = null;
 
-  constructor(private cookieService: CookieService) { }
+  constructor(private cookieService: CookieService, private _router: Router) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +29,8 @@ export class LoginComponent implements OnInit {
 
       this.cookieService.createCookie('__jwtBearer', response.data.jwt, 30);
       this.cookieService.createCookie('__authUser', JSON.stringify(response.data.user), 30);
+
+      this._router.navigate(['user-profile']);
     })
     .catch(error => {
       console.log('An error occurred:', error.response);

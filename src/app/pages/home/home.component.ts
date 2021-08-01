@@ -13,20 +13,20 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.getShipments().catch((error) => {
-      this.error = error;
-    });
+    // this.getShipments().catch((error) => {
+    //   this.error = error;
+    // });
   }
 
-  async getShipments(): Promise<void> {
-    try {
-      const response = await axios.get('http://localhost:1337/shipments');
-      this.restaurants = response.data;
-      console.log(this.restaurants);
-    } catch (error) {
-      this.error = error;
-    }
-  }
+  // async getShipments(): Promise<void> {
+  //   try {
+  //     const response = await axios.get('http://localhost:1337/shipments');
+  //     this.restaurants = response.data;
+  //     console.log(this.restaurants);
+  //   } catch (error) {
+  //     this.error = error;
+  //   }
+  // }
 
   onShowMore(): void {
   }

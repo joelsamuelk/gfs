@@ -13,6 +13,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { GfsReunionComponent } from './pages/gfs-reunion/gfs-reunion.component';
 import { HeaderSliderComponent } from './components/header-slider/header-slider.component';
 import { SubmitClaimComponent } from './pages/submit-claim/submit-claim.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SubmitClaimComponent } from './pages/submit-claim/submit-claim.componen
     HomeComponent,
     GfsReunionComponent,
     HeaderSliderComponent,
-    SubmitClaimComponent
+    SubmitClaimComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
