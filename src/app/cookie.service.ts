@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
+import { Router } from '@angular/router';
+
+import { User } from './models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CookieService {
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   createCookie(name: string, value: string, days: number) {  
       var expires = "";  
@@ -18,11 +21,12 @@ export class CookieService {
       document.cookie = name + "=" + value + expires + "; path=/";  
   }
   
-  async verifyUser(): Promise<boolean> {
+  async verifyUser(): Promise<User | undefined> {
     const jwtBearer = this.readCookie('__jwtBearer');
 
     if(!jwtBearer){
-      return false;
+      this._router.navigate(['login']);
+      return undefined;
     }
     
     try{
@@ -33,24 +37,16 @@ export class CookieService {
       });
 
       if(!response){
-        return false;
+        this._router.navigate(['login']);
+        return undefined;
       }
 
-      return true;
+      return response.data as User;
     }
     catch(e){
-      return false;
+      this._router.navigate(['login']);
+      return undefined;
     }
-    
-
-
-    /* .then(response => {
-      return true;
-    })
-    .catch(error => {
-      console.log('An error occurred:', error.response);
-      return false;
-    }); */
   }
 
   readCookie(name: string) {  
@@ -64,7 +60,12 @@ export class CookieService {
       return null;  
   }  
 
+  logOut(){
+    this.eraseCookie("__jwtBearer");
+    this._router.navigate(['home']);
+  }
+
   eraseCookie(name: string) {  
-      this.createCookie(name, "", -1);  
+      this.createCookie(name, "", -1); 
   }
 }

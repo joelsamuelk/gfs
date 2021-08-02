@@ -24,11 +24,7 @@ export class LoginComponent implements OnInit {
       password: password,
     })
     .then(response => {
-      // console.log('User profile', response.data.user);
-      // console.log('User token', response.data.jwt);
-
       this.cookieService.createCookie('__jwtBearer', response.data.jwt, 30);
-      this.cookieService.createCookie('__authUser', JSON.stringify(response.data.user), 30);
 
       this._router.navigate(['user-profile']);
     })
