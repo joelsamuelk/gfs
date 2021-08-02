@@ -28,6 +28,7 @@ export class TopNavigationComponent implements OnInit {
   }
 
   logout():void {
+    console.log("in here");
     this.cookieService.logOut();
   }
 

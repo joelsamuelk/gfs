@@ -60,12 +60,13 @@ export class CookieService {
       return null;  
   }  
 
-  logOut(){
-    this.eraseCookie("__jwtBearer");
-    this._router.navigate(['home']);
+  async logOut(){
+    await this.eraseCookie("__jwtBearer").then(resp => {
+      this._router.navigate(['']);
+    });
   }
 
-  eraseCookie(name: string) {  
+  async eraseCookie(name: string) {  
       this.createCookie(name, "", -1); 
   }
 }
