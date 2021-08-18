@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CookieService } from 'src/app/cookie.service';
 import { User } from 'src/app/models/user.model';
 import { Router } from '@angular/router';
-import { UserProfileComponent } from 'src/app/pages/user-profile/user-profile.component';
 
 @Component({
   selector: 'app-top-navigation',
@@ -10,17 +9,28 @@ import { UserProfileComponent } from 'src/app/pages/user-profile/user-profile.co
   styleUrls: ['./top-navigation.component.scss']
 })
 export class TopNavigationComponent implements OnInit {
+  @Input()  user: User | undefined;
+  @Output() userChange = new EventEmitter<User>();
+
+  @Input() userLoggedIn: boolean;
+  @Output() userLoggedInChange = new EventEmitter<boolean>();
+
   classApplied = false;
-  user: User | undefined;
+  
 
   constructor(private cookieService: CookieService, private _router: Router) {
+    this.user = undefined;
+    this.userLoggedIn = false;
    }
 
   async ngOnInit(): Promise<any> {
 
     try{
       this.user = await this.cookieService.verifyUser();
-      console.log(this.user);
+      this.userChange.emit(this.user);
+
+      this.userLoggedIn = true;
+      this.userLoggedInChange.emit(this.userLoggedIn);
     }
     catch(e){
       console.error(e);
@@ -28,7 +38,8 @@ export class TopNavigationComponent implements OnInit {
   }
 
   logout():void {
-    console.log("in here");
+    this.userLoggedIn = false;
+    this.userLoggedInChange.emit(this.userLoggedIn);
     this.cookieService.logOut();
   }
 

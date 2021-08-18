@@ -42,8 +42,8 @@
       "required": true
     },
     "customers": {
-      "collection": "customer",
-      "via": "shipments"
+      "via": "shipments",
+      "collection": "customer"
     },
     "shipment": {
       "via": "suppliers",

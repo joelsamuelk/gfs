@@ -14,6 +14,8 @@ import { GfsReunionComponent } from './pages/gfs-reunion/gfs-reunion.component';
 import { HeaderSliderComponent } from './components/header-slider/header-slider.component';
 import { SubmitClaimComponent } from './pages/submit-claim/submit-claim.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,15 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     GfsReunionComponent,
     HeaderSliderComponent,
     SubmitClaimComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatTableModule,
+    AgGridModule.withComponents([])
   ],
   providers: [],
   bootstrap: [AppComponent]

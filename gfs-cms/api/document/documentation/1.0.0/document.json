@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/shipments": {
+    "/documents": {
       "get": {
         "deprecated": false,
-        "description": "Find all the shipments's records",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve shipments document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Shipments"
+                    "$ref": "#/components/schemas/Document"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Shipments"
+          "Document"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new shipments record",
+        "description": "Create a new record",
         "responses": {
           "200": {
-            "description": "Retrieve shipments document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Shipments"
+                  "$ref": "#/components/schemas/Document"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Shipments"
+          "Document"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewShipments"
+                "$ref": "#/components/schemas/NewDocument"
               }
             }
           }
         }
       }
     },
-    "/shipments/count": {
+    "/documents/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of shipments documents",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve shipments document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Shipments"
+          "Document"
         ],
         "parameters": []
       }
     },
-    "/shipments/{id}": {
+    "/documents/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one shipments record",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve shipments document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Shipments"
+                  "$ref": "#/components/schemas/Document"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Shipments"
+          "Document"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single shipments record",
+        "description": "Update a record",
         "responses": {
           "200": {
-            "description": "Retrieve shipments document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Shipments"
+                  "$ref": "#/components/schemas/Document"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Shipments"
+          "Document"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewShipments"
+                "$ref": "#/components/schemas/NewDocument"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single shipments record",
+        "description": "Delete a record",
         "responses": {
           "200": {
-            "description": "deletes a single shipments based on the ID supplied",
+            "description": "deletes a single record based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Shipments"
+          "Document"
         ],
         "parameters": [
           {
@@ -514,79 +514,73 @@
   },
   "components": {
     "schemas": {
-      "Shipments": {
+      "Document": {
         "required": [
-          "id",
-          "vessel",
-          "Port_Of_Load",
-          "Departure",
-          "Arrival",
-          "Status"
+          "id"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "vessel": {
-            "type": "string"
-          },
-          "Port_Of_Load": {
-            "type": "string"
-          },
-          "Container_No": {
-            "type": "string"
-          },
-          "Departure": {
-            "type": "string",
-            "format": "date"
-          },
-          "Arrival": {
-            "type": "string",
-            "format": "date"
-          },
-          "Status": {
-            "type": "string",
-            "enum": [
-              "Loaded",
-              "In_Transit",
-              "Discharged",
-              "Gated_Out"
-            ]
-          },
-          "customers": {
+          "documents": {
             "type": "array",
             "items": {
               "required": [
                 "id",
-                "company_name"
+                "name",
+                "hash",
+                "mime",
+                "size",
+                "url",
+                "provider"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "company_name": {
-                  "type": "string",
-                  "enum": [
-                    "Tropical_fruits",
-                    "Gfs_sarl_reunion",
-                    "Orange_fraiche",
-                    "Mkm_solution",
-                    "Cao",
-                    "Caudex",
-                    "Krysremix",
-                    "Shazzy_Land"
-                  ]
-                },
-                "shipments": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "user": {
+                "name": {
                   "type": "string"
                 },
-                "published_at": {
+                "alternativeText": {
+                  "type": "string"
+                },
+                "caption": {
+                  "type": "string"
+                },
+                "width": {
+                  "type": "integer"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "formats": {
+                  "type": "object"
+                },
+                "hash": {
+                  "type": "string"
+                },
+                "ext": {
+                  "type": "string"
+                },
+                "mime": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "number"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "previewUrl": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "provider_metadata": {
+                  "type": "object"
+                },
+                "related": {
                   "type": "string"
                 },
                 "created_by": {
@@ -598,33 +592,93 @@
               }
             }
           },
-          "shipment": {
+          "customer": {
             "required": [
-              "id"
+              "id",
+              "company_name"
             ],
             "properties": {
               "id": {
                 "type": "string"
               },
-              "name": {
+              "company_name": {
                 "type": "string",
                 "enum": [
-                  "Dakahlia",
-                  "Idea_Fruit",
-                  "Fruit_secure",
-                  "Fruitways",
-                  "Zest_Fruit",
-                  "Into_asia",
-                  "Jaguar",
-                  "Kalinex_Fruit",
-                  "Wadi_Group"
+                  "Tropical_fruits",
+                  "Gfs_sarl_reunion",
+                  "Orange_fraiche",
+                  "Mkm_solution",
+                  "Cao",
+                  "Caudex",
+                  "Krysremix",
+                  "Shazzy_Land"
                 ]
               },
-              "suppliers": {
+              "shipments": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
+              },
+              "user": {
+                "type": "string"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "shipment": {
+            "required": [
+              "id",
+              "vessel",
+              "Port_Of_Load",
+              "Departure",
+              "Arrival",
+              "Status"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "vessel": {
+                "type": "string"
+              },
+              "Port_Of_Load": {
+                "type": "string"
+              },
+              "Container_No": {
+                "type": "string"
+              },
+              "Departure": {
+                "type": "string"
+              },
+              "Arrival": {
+                "type": "string"
+              },
+              "Status": {
+                "type": "string",
+                "enum": [
+                  "Loaded",
+                  "In_Transit",
+                  "Discharged",
+                  "Gated_Out"
+                ]
+              },
+              "customers": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "shipment": {
+                "type": "string"
               },
               "published_at": {
                 "type": "string"
@@ -643,46 +697,10 @@
           }
         }
       },
-      "NewShipments": {
-        "required": [
-          "vessel",
-          "Port_Of_Load",
-          "Departure",
-          "Arrival",
-          "Status"
-        ],
+      "NewDocument": {
         "properties": {
-          "vessel": {
+          "customer": {
             "type": "string"
-          },
-          "Port_Of_Load": {
-            "type": "string"
-          },
-          "Container_No": {
-            "type": "string"
-          },
-          "Departure": {
-            "type": "string",
-            "format": "date"
-          },
-          "Arrival": {
-            "type": "string",
-            "format": "date"
-          },
-          "Status": {
-            "type": "string",
-            "enum": [
-              "Loaded",
-              "In_Transit",
-              "Discharged",
-              "Gated_Out"
-            ]
-          },
-          "customers": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           },
           "shipment": {
             "type": "string"
@@ -703,7 +721,7 @@
   },
   "tags": [
     {
-      "name": "Shipments"
+      "name": "Document"
     }
   ]
 }

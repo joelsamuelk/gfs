@@ -1,5 +1,5 @@
 <header id="home">
-  <div class="container">
+  <div class="container" style="font-family: 'Raleway', 'Helvetica', 'Arial', 'sans-serif' !important; text-transform: uppercase;">
     <nav class="navbar navbar-expand-lg navbar-light ">
       <!-- Change Logo Img Here -->
       <a class="navbar-brand" href="#"><img src="assets/images/logo.png" alt="" width="120px"></a>
@@ -14,19 +14,19 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <!-- Nav Link -->
-            <a class="nav-link" data-scroll routerLink="/">Home.<span class="sr-only">(current)</span></a>
+            <a class="nav-link" data-scroll routerLink="/">Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <!-- Nav Link -->
-            <a class="nav-link" data-scroll href="#about-us">About Us.</a>
+            <a class="nav-link" data-scroll href="#about-us">About Us</a>
           </li>
           <li class="nav-item">
             <!-- Nav Link -->
-            <a class="nav-link" data-scroll href="#portfolio">Products.</a>
+            <a class="nav-link" data-scroll href="#portfolio">Products</a>
           </li>
           <li class="nav-item">
             <!-- Nav Link -->
-            <a class="nav-link" data-scroll href="#blog">Contact us.</a>
+            <a class="nav-link" data-scroll href="#blog">Contact us</a>
           </li>
           <li class="nav-item dropdown">
             <!-- Lang Dropdown Link -->
@@ -38,7 +38,7 @@
               <a class="dropdown-item" href="#">FR</a>
             </div>
           </li>
-          <li *ngIf="user && user!.username" class="nav-item dropdown">
+          <li *ngIf="userLoggedIn" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user!.username}}</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <!-- Lang Dropdown Choice -->
@@ -50,7 +50,7 @@
         </ul>
         <form data-scroll href="#contact-us" class="contact-btn form-inline my-2 my-lg-0">
           <!-- Contacgt Us Button --> 
-          <button *ngIf="!user" routerLink="/login" routerLinkActive="active">Login</button>
+          <button [hidden]="userLoggedIn" routerLink="/login" routerLinkActive="active">Login</button>
         </form> 
       </div>
     </nav>

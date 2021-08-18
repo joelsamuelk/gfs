@@ -517,13 +517,13 @@
       "Customer": {
         "required": [
           "id",
-          "name"
+          "company_name"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "name": {
+          "company_name": {
             "type": "string",
             "enum": [
               "Tropical_fruits",
@@ -531,7 +531,9 @@
               "Orange_fraiche",
               "Mkm_solution",
               "Cao",
-              "Caudex"
+              "Caudex",
+              "Krysremix",
+              "Shazzy_Land"
             ]
           },
           "shipments": {
@@ -594,6 +596,51 @@
               }
             }
           },
+          "user": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -602,10 +649,10 @@
       },
       "NewCustomer": {
         "required": [
-          "name"
+          "company_name"
         ],
         "properties": {
-          "name": {
+          "company_name": {
             "type": "string",
             "enum": [
               "Tropical_fruits",
@@ -613,7 +660,9 @@
               "Orange_fraiche",
               "Mkm_solution",
               "Cao",
-              "Caudex"
+              "Caudex",
+              "Krysremix",
+              "Shazzy_Land"
             ]
           },
           "shipments": {
@@ -621,6 +670,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "user": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",

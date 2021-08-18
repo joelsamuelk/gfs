@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "customers",
   "info": {
-    "name": "customer"
+    "name": "customer",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -11,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "company_name": {
       "type": "enumeration",
       "enum": [
         "Tropical_fruits",
@@ -19,14 +20,20 @@
         "Orange_fraiche",
         "Mkm_solution",
         "Cao",
-        "Caudex"
+        "Caudex",
+        "Krysremix",
+        "Shazzy_Land"
       ],
       "required": true
     },
     "shipments": {
-      "via": "customers",
       "collection": "shipments",
+      "via": "customers",
       "dominant": true
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user"
     }
   }
 }
