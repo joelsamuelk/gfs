@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import axios from 'axios';
 import { Router } from '@angular/router';
+
+import axios from 'axios';
 
 import { User } from './models/user.model';
 
@@ -9,64 +10,68 @@ import { User } from './models/user.model';
 })
 export class CookieService {
 
-  constructor(private _router: Router) { }
+  constructor(private router: Router) { }
 
-  createCookie(name: string, value: string, days: number) {  
-      var expires = "";  
-      if (days) {  
-          var date = new Date();  
-          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));  
-          expires = "; expires=" + date.toUTCString();  
-      }  
-      document.cookie = name + "=" + value + expires + "; path=/";  
+  createCookie(name: string, value: string, days: number): void {
+      let expires = '';
+
+      if (days) {
+          const date = new Date();
+          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+          expires = '; expires=' + date.toUTCString();
+      }
+      document.cookie = name + '=' + value + expires + '; path=/';
   }
-  
+
   async verifyUser(): Promise<User | undefined> {
     const jwtBearer = this.readCookie('__jwtBearer');
 
-    if(!jwtBearer){
-      this._router.navigate(['login']);
+    if (!jwtBearer){
+      await this.router.navigate(['login']);
       return undefined;
     }
-    
+
     try{
-      const response = await axios.get("http://localhost:1337/users/me", {
+      const response = await axios.get('http://localhost:1337/users/me', {
         headers: {
           Authorization: `Bearer ${jwtBearer}`
         }
       });
 
-      if(!response){
-        this._router.navigate(['login']);
+      if (!response){
+        await this.router.navigate(['login']);
         return undefined;
       }
 
       return response.data as User;
     }
-    catch(e){
-      this._router.navigate(['login']);
+    catch (e){
+      await this.router.navigate(['login']);
       return undefined;
     }
   }
 
-  readCookie(name: string) {  
-      var nameEQ = name + "=";  
-      var ca = document.cookie.split(';');  
-      for (var i = 0; i < ca.length; i++) {  
-          var c = ca[i];  
-          while (c.charAt(0) == ' ') c = c.substring(1, c.length);  
-          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);  
-      }  
-      return null;  
-  }  
+  readCookie(name: string): string {
+    const nameEQ = name + '=';
+    const ca = document.cookie.split(';');
+    for (let c of ca) {
+      while (c.charAt(0) === ' ') {
+        c = c.substring(1, c.length);
+      }
+      if (c.indexOf(nameEQ) === 0) {
+        return c.substring(nameEQ.length, c.length);
+      }
+    }
+    return '';
+  }
 
-  async logOut(){
-    await this.eraseCookie("__jwtBearer").then(resp => {
-      this._router.navigate(['']);
+  async logOut(): Promise<void> {
+    await this.eraseCookie('__jwtBearer').then(resp => {
+      this.router.navigate(['']);
     });
   }
 
-  async eraseCookie(name: string) {  
-      this.createCookie(name, "", -1); 
+  private async eraseCookie(name: string): Promise<void> {
+      this.createCookie(name, '', -1);
   }
 }
