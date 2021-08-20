@@ -16,9 +16,8 @@ export class TopNavigationComponent implements OnInit {
   @Output() userLoggedInChange = new EventEmitter<boolean>();
 
   classApplied = false;
-  
 
-  constructor(private cookieService: CookieService, private _router: Router) {
+  constructor(private cookieService: CookieService) {
     this.user = undefined;
     this.userLoggedIn = false;
    }
@@ -32,12 +31,12 @@ export class TopNavigationComponent implements OnInit {
       this.userLoggedIn = true;
       this.userLoggedInChange.emit(this.userLoggedIn);
     }
-    catch(e){
+    catch (e){
       console.error(e);
     }
   }
 
-  logout():void {
+  logout(): void {
     this.userLoggedIn = false;
     this.userLoggedInChange.emit(this.userLoggedIn);
     this.cookieService.logOut();

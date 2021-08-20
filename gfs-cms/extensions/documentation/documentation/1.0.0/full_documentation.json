@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "08/18/2021 6:37:27 PM"
+    "x-generation-date": "08/20/2021 6:54:06 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1324,7 +1324,7 @@
     "/shipments/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of shipments documents",
+        "description": "Retrieve the number of shipments documents",
         "responses": {
           "200": {
             "description": "Retrieve shipments document(s)",
