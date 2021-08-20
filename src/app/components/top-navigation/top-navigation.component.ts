@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { CookieService } from 'src/app/cookie.service';
 import { User } from 'src/app/models/user.model';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-navigation',
@@ -22,16 +23,21 @@ export class TopNavigationComponent implements OnInit {
     this.userLoggedIn = false;
    }
 
-  async ngOnInit(): Promise<any> {
+  ngOnInit(): void {
+    this.login().then(r => {});
+  }
 
-    try{
+  async login(): Promise<void> {
+    this.userLoggedIn = false;
+
+    try {
       this.user = await this.cookieService.verifyUser();
       this.userChange.emit(this.user);
 
       this.userLoggedIn = true;
       this.userLoggedInChange.emit(this.userLoggedIn);
     }
-    catch (e){
+    catch (e) {
       console.error(e);
     }
   }
@@ -39,7 +45,7 @@ export class TopNavigationComponent implements OnInit {
   logout(): void {
     this.userLoggedIn = false;
     this.userLoggedInChange.emit(this.userLoggedIn);
-    this.cookieService.logOut();
+    this.cookieService.logOut().then(r => {});
   }
 
   onMenuClick(): void {

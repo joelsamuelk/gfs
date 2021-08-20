@@ -14,6 +14,7 @@ export class CookieService {
 
   createCookie(name: string, value: string, days: number): void {
       let expires = '';
+
       if (days) {
           const date = new Date();
           date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -63,13 +64,13 @@ export class CookieService {
       return '';
   }
 
-  async logOut(): Promise<void>{
+  async logOut(): Promise<void> {
     await this.eraseCookie('__jwtBearer').then(resp => {
       this.router.navigate(['']);
     });
   }
 
-  async eraseCookie(name: string): Promise<void> {
+  private async eraseCookie(name: string): Promise<void> {
       this.createCookie(name, '', -1);
   }
 }
