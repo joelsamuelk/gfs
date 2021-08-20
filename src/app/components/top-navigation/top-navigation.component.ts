@@ -36,7 +36,8 @@ export class TopNavigationComponent implements OnInit {
 
       this.userLoggedIn = true;
       this.userLoggedInChange.emit(this.userLoggedIn);
-    } catch (e) {
+    }
+    catch (e) {
       console.error(e);
     }
   }
