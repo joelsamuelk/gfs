@@ -1,7 +1,4 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-
-import axios from 'axios';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +6,7 @@ import axios from 'axios';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'angular-app';
+  title = 'GFS Marketing SA';
 
   constructor() {}
 

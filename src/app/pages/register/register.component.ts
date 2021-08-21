@@ -30,9 +30,9 @@ export class RegisterComponent implements OnInit {
 
   register(username: string, email: string, password: string): boolean {
     axios.post('http://localhost:1337/auth/local/register', {
-    username: username,
-    email: email,
-    password: password,
+    username,
+    email,
+    password,
   })
   .then(response => {
     console.log('User profile', response.data.user);
@@ -46,5 +46,4 @@ export class RegisterComponent implements OnInit {
 
     return true;
   }
-
 }

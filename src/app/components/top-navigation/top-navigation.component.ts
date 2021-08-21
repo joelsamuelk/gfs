@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { CookieService } from 'src/app/cookie.service';
 import { User } from 'src/app/models/user.model';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-navigation',
@@ -12,18 +13,21 @@ export class TopNavigationComponent implements OnInit {
   user: User | undefined;
 
   classApplied = false;
-  
 
-  constructor(private cookieService: CookieService, private _router: Router) {
+  constructor(private cookieService: CookieService) {
     this.user = undefined;
    }
 
-  async ngOnInit(): Promise<any> {
+  ngOnInit(): void {
+    this.login().then(r => {});
+  }
+
+  async login(): Promise<void> {
 
     try{
       this.user = await this.cookieService.verifyUserNoRedirect();
     }
-    catch(e){
+    catch (e) {
       console.error(e);
     }
   }

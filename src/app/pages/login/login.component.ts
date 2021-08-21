@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   users = [];
   error = null;
 
-  constructor(private cookieService: CookieService, private _router: Router) { }
+  constructor(private cookieService: CookieService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -21,12 +21,12 @@ export class LoginComponent implements OnInit {
   login(email: string, password: string): boolean {
     axios.post('http://localhost:1337/auth/local', {
       identifier: email,
-      password: password,
+      password,
     })
     .then(response => {
       this.cookieService.createCookie('__jwtBearer', response.data.jwt, 30);
 
-      this._router.navigate(['user-profile']);
+      this.router.navigate(['user-profile']);
     })
     .catch(error => {
       console.log('An error occurred:', error.response);
