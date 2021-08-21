@@ -9,28 +9,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./top-navigation.component.scss']
 })
 export class TopNavigationComponent implements OnInit {
-  @Input()  user: User | undefined;
-  @Output() userChange = new EventEmitter<User>();
-
-  @Input() userLoggedIn: boolean;
-  @Output() userLoggedInChange = new EventEmitter<boolean>();
+  user: User | undefined;
 
   classApplied = false;
   
 
   constructor(private cookieService: CookieService, private _router: Router) {
     this.user = undefined;
-    this.userLoggedIn = false;
    }
 
   async ngOnInit(): Promise<any> {
 
     try{
-      this.user = await this.cookieService.verifyUser();
-      this.userChange.emit(this.user);
-
-      this.userLoggedIn = true;
-      this.userLoggedInChange.emit(this.userLoggedIn);
+      this.user = await this.cookieService.verifyUserNoRedirect();
     }
     catch(e){
       console.error(e);
@@ -38,8 +29,6 @@ export class TopNavigationComponent implements OnInit {
   }
 
   logout():void {
-    this.userLoggedIn = false;
-    this.userLoggedInChange.emit(this.userLoggedIn);
     this.cookieService.logOut();
   }
 

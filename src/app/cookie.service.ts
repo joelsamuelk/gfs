@@ -49,6 +49,24 @@ export class CookieService {
     }
   }
 
+  async verifyUserNoRedirect(): Promise<User | undefined> {
+    const jwtBearer = this.readCookie('__jwtBearer');
+    
+    try{
+      const response = await axios.get("http://localhost:1337/users/me", {
+        headers: {
+          Authorization: `Bearer ${jwtBearer}`
+        }
+      });
+      return response.data as User;
+    }
+    catch(e){
+      console.log("in the catch");
+      //this._router.navigate(['login']);
+      return undefined;
+    }
+  }
+
   readCookie(name: string) {  
       var nameEQ = name + "=";  
       var ca = document.cookie.split(';');  
