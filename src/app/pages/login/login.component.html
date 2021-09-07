@@ -1,23 +1,27 @@
-<section id="login-form">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <h5>Login</h5>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 col-lg-12 email">
-        <input #email placeholder="Your email" type="email" id="email" pattern=".+@globex.com" size="30" required>
-      </div>
-      <div class="col-12 col-lg-12 email">
-        <input #password placeholder="Password" type="password" id="password" size="30" required>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="hero-btns contact-btn">
-          <!-- Send Message Btn -->
-          <a (click)="login(email.value, password.value)">Login</a>
+<section class="login-container">
+  <video autoplay muted loop id="login-bg">
+    <source src="assets/videos/video_login.mp4" type="video/mp4">
+  </video>
+  <div id="login-form">
+    <a class="home-logo" routerLink="/">
+      <img src="assets/images/logo.png" alt="GFS Logo">
+    </a>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h5>Login</h5>
+        </div>
+        <div class="col-12 col-lg-12 email">
+          <input #email placeholder="Your email" type="email" id="email" pattern=".+@globex.com" size="30" required>
+        </div>
+        <div class="col-12 col-lg-12 email">
+          <input #password placeholder="Password" type="password" id="password" size="30" required>
+        </div>
+        <div class="col-12">
+          <div class="hero-btns contact-btn">
+            <!-- Send Message Btn -->
+            <a (click)="login(email.value, password.value)">Login</a>
+          </div>
         </div>
       </div>
     </div>
