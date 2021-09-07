@@ -257,7 +257,7 @@
     "/shipments/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the number of shipments documents",
+        "description": "Retrieve the numver of shipments documents",
         "responses": {
           "200": {
             "description": "Retrieve shipments document(s)",

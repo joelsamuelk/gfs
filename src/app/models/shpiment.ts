@@ -6,5 +6,5 @@ export interface Shipment {
     Departure: string
     Arrival: string
     Status: string
-    Documents: Array<Document> | undefined
+    Documents?: Array<Document> | undefined
 }

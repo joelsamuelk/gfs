@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import { CookieService } from 'src/app/cookie.service';
 import { User } from 'src/app/models/user.model';
+import { Document } from 'src/app/models/document';
 import { Shipment as Shipment } from 'src/app/models/shpiment';
 
 @Component({
@@ -17,6 +18,7 @@ export class UserProfileComponent implements OnInit {
     this.jwtBearer = null;
    }
 
+  showModal = true;
   jwtBearer: string | null;
   user: User | undefined;
   Shipments: Array<Shipment> = [];
@@ -24,29 +26,29 @@ export class UserProfileComponent implements OnInit {
   private gridColumnApi: any;
 
   columnDefs = [
-    { headerName: 'Vessel', field: 'vessel', suppressSizeToFit: true,
-      resizable: true, sortable: true, filter: true, checkBoxSelection: true,
-    },
+    { headerName: 'Vessel', field: 'vessel', suppressSizeToFit: true, resizable: true, sortable: true, filter: true, checkBoxSelection: true },
     { headerName: 'Port of Load', field: 'Port_Of_Load', suppressSizeToFit: true, resizable: true, sortable: true, filter: true },
     { headerName: 'Container #', field: 'Container_No', suppressSizeToFit: true, resizable: true, sortable: true, filter: true },
     { headerName: 'Departure', field: 'Departure', suppressSizeToFit: true, resizable: true, sortable: true, filter: true },
     { headerName: 'Arrival', field: 'Arrival', suppressSizeToFit: true, resizable: true, sortable: true, filter: true },
     { headerName: 'Status', field: 'Status', suppressSizeToFit: true, resizable: true, sortable: true, filter: true },
-
     {
       headerName: 'Documents',
       suppressSizeToFit: true,
       resizable: true,
       cellRenderer: (data: any) => {
-          if (data.data.Documents.length > 0) {
-            let returnHtml = `<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documents</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">`;
+          if (data.data.hasOwnProperty('Documents') && data.data.Documents.length > 0) {
+            let returnHtml = `<button type="button" class="btn btn-success" data-dismiss="modal" (click) = "toggleModal()">YES</button>`;
 
-            data.data.Documents.forEach((element: { url: string; name: string; }) => {
-                returnHtml += `<a href="http://localhost:1337` + element.url + `" target="_blank">` + element.name + `</a>`;
-            });
+            // let returnHtml = `<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documents</a>
+            // <div class="dropdown-menu" aria-labelledby="navbarDropdown">`;
 
-            returnHtml += `</div>`;
+            // data.data.Documents.forEach((element: { url: string; name: string; }) => {
+            //     returnHtml += `<a href="http://localhost:1337` + element.url + `" target="_blank">` + element.name + `</a>`;
+            // });
+
+            // returnHtml += `</div>`;
+
             // let returnHtml = `<div class="btn-group">
             //       <button type="button" class="btn btn-default dropdown-toggle"
             //       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,7 +57,6 @@ export class UserProfileComponent implements OnInit {
             //       <ul class="dropdown-menu">
             //           <li><a href='#'>Edit</a></li>
             //           <li><a href='#'">Delete</a></li>
-            //           <li role="separator" class="divider"></li>
             //           <li><a href='#'>Print</a></li>
             //       </ul>
             //   </div>`;
@@ -88,7 +89,6 @@ export class UserProfileComponent implements OnInit {
         }
       });
 
-      console.log(documents);
       let userDocuments: any[] = [];
 
       if (documents.data.length > 0) {
@@ -101,7 +101,7 @@ export class UserProfileComponent implements OnInit {
           let shipmentDocuments = new Array<Document>();
 
           if (documents.data.length > 0) {
-            shipmentDocuments = userDocuments.find((x: { shipment: { id: any; }; }) => x.shipment.id === element.id).documents;
+            shipmentDocuments = userDocuments.find((x: { shipment: { id: any; }; }) => x.shipment.id === element.id)?.documents;
           }
 
           const currentShipment: Shipment = {
@@ -111,7 +111,7 @@ export class UserProfileComponent implements OnInit {
             Departure: element.Departure,
             Port_Of_Load: element.Port_Of_Load,
             Status: element.Status,
-            Documents: shipmentDocuments.length > 0 ? shipmentDocuments : undefined
+            Documents: shipmentDocuments
           } as Shipment;
 
           this.Shipments?.push(currentShipment);
@@ -134,5 +134,10 @@ export class UserProfileComponent implements OnInit {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     params.api.sizeColumnsToFit();
+  }
+
+  toggleModal()
+  {
+      this.showModal = !this.showModal;
   }
 }
