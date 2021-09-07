@@ -36,7 +36,7 @@ import { AgGridModule } from 'ag-grid-angular';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatTableModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
   ],
   providers: [],
   bootstrap: [AppComponent]
