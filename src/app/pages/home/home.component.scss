@@ -1,0 +1,45 @@
+.home-section {
+  .col-row {
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+
+    .col-text {
+      max-width: 700px;
+    }
+
+    .col-img {
+      max-width: 400px;
+    }
+  }
+
+  #home-img {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    top: 50%;
+    margin: -46% 0 0 2rem;
+    z-index: 1;
+
+    @media (max-width: 991px) {
+      display: none;
+    }
+  }
+}
+
+.portfolio {
+  p {
+    color: #000000;
+    margin-bottom: 60px;
+    line-height: 1.5;
+  }
+}
+
+#video1 {
+  position: absolute;
+  z-index: 0;
+  object-fit: cover;
+  width:100%;
+  height:100%;
+}
+
