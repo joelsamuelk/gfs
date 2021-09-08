@@ -26,40 +26,26 @@ export class UserProfileComponent implements OnInit {
   private gridColumnApi: any;
 
   columnDefs = [
-    { headerName: 'Vessel', field: 'vessel', suppressSizeToFit: true, resizable: true, sortable: true, filter: true, checkBoxSelection: true },
-    { headerName: 'Port of Load', field: 'Port_Of_Load', suppressSizeToFit: true, resizable: true, sortable: true, filter: true },
-    { headerName: 'Container #', field: 'Container_No', suppressSizeToFit: true, resizable: true, sortable: true, filter: true },
-    { headerName: 'Departure', field: 'Departure', suppressSizeToFit: true, resizable: true, sortable: true, filter: true },
-    { headerName: 'Arrival', field: 'Arrival', suppressSizeToFit: true, resizable: true, sortable: true, filter: true },
-    { headerName: 'Status', field: 'Status', suppressSizeToFit: true, resizable: true, sortable: true, filter: true },
+    { headerName: 'Vessel', field: 'vessel', resizable: true, sortable: true, filter: true },
+    { headerName: 'Port of Load', field: 'Port_Of_Load', resizable: true, sortable: true, filter: true },
+    { headerName: 'Container #', field: 'Container_No', resizable: true, sortable: true, filter: true },
+    { headerName: 'Departure', field: 'Departure', resizable: true, sortable: true, filter: true },
+    { headerName: 'Arrival', field: 'Arrival', resizable: true, sortable: true, filter: true },
+    { headerName: 'Status', field: 'Status', resizable: true, sortable: true, filter: true },
     {
       headerName: 'Documents',
       suppressSizeToFit: true,
       resizable: true,
       cellRenderer: (data: any) => {
           if (data.data.hasOwnProperty('Documents') && data.data.Documents.length > 0) {
-            let returnHtml = `<button type="button" class="btn btn-success" data-dismiss="modal" (click) = "toggleModal()">YES</button>`;
+            let returnHtml = '<select style="max-width: 160px;" class="btn btn-sm" onChange="browseToDocument(this)"><option value="0">View document(s)</option>';
 
-            // let returnHtml = `<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documents</a>
-            // <div class="dropdown-menu" aria-labelledby="navbarDropdown">`;
+            data.data.Documents.forEach((element: { url: string; name: string; }) => {
+              returnHtml += `<option value="http://localhost:1337` + element.url + `">` + element.name + `</option>`;
+            });
 
-            // data.data.Documents.forEach((element: { url: string; name: string; }) => {
-            //     returnHtml += `<a href="http://localhost:1337` + element.url + `" target="_blank">` + element.name + `</a>`;
-            // });
+            returnHtml += `</select>`;
 
-            // returnHtml += `</div>`;
-
-            // let returnHtml = `<div class="btn-group">
-            //       <button type="button" class="btn btn-default dropdown-toggle"
-            //       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            //           Actions <span class="caret"></span>
-            //       </button>
-            //       <ul class="dropdown-menu">
-            //           <li><a href='#'>Edit</a></li>
-            //           <li><a href='#'">Delete</a></li>
-            //           <li><a href='#'>Print</a></li>
-            //       </ul>
-            //   </div>`;
             return returnHtml;
           }
           else{
@@ -133,11 +119,8 @@ export class UserProfileComponent implements OnInit {
   onGridReady(params: { api: { sizeColumnsToFit: () => void; }; columnApi: any; }): void {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    params.api.sizeColumnsToFit();
-  }
-
-  toggleModal()
-  {
-      this.showModal = !this.showModal;
+    setTimeout(() => {
+      params.api.sizeColumnsToFit();
+    }, 500);
   }
 }

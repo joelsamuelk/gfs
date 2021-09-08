@@ -19,5 +19,14 @@
 </head>
 <body class="mat-typography">
   <app-root></app-root>
+  <script>
+    function browseToDocument(e) {
+      if(e.selectedIndex != 0){
+        const url = (e.value || e.options[e.selectedIndex].value);
+        window.open(url, '_blank').focus();
+        e.selectedIndex = 0;
+      }
+    }
+  </script>
 </body>
 </html>
