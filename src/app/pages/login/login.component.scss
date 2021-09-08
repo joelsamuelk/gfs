@@ -36,6 +36,9 @@
 
     .home-logo {
       width: 200px;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #ff3946;
 
       @media (max-width: 991px) {
         width: 150px;
