@@ -6,6 +6,7 @@ import { CookieService } from 'src/app/cookie.service';
 import { User } from 'src/app/models/user.model';
 import { Document } from 'src/app/models/document';
 import { Shipment as Shipment } from 'src/app/models/shpiment';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-profile',
@@ -41,7 +42,7 @@ export class UserProfileComponent implements OnInit {
             let returnHtml = '<select style="max-width: 160px;" class="btn btn-sm" onChange="browseToDocument(this)"><option value="0">View document(s)</option>';
 
             data.data.Documents.forEach((element: { url: string; name: string; }) => {
-              returnHtml += `<option value="http://localhost:1337` + element.url + `">` + element.name + `</option>`;
+              returnHtml += `<option value="` + environment.strapiUrl + element.url + `">` + element.name + `</option>`;
             });
 
             returnHtml += `</select>`;
@@ -63,13 +64,13 @@ export class UserProfileComponent implements OnInit {
       this.user = await this.cookieService.verifyUser();
       this.jwtBearer = this.cookieService.readCookie('__jwtBearer');
 
-      const customer = await axios.get('http://localhost:1337/customers?user.username=' + this.user?.username, {
+      const customer = await axios.get(environment.strapiUrl +'/customers?user.username=' + this.user?.username, {
         headers: {
           Authorization: `Bearer ${this.jwtBearer}`
         }
       });
 
-      const documents = await axios.get('http://localhost:1337/documents?customer.user=' + this.user?.id, {
+      const documents = await axios.get(environment.strapiUrl + '/documents?customer.user=' + this.user?.id, {
         headers: {
           Authorization: `Bearer ${this.jwtBearer}`
         }

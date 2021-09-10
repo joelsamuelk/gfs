@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import axios from 'axios';
 
 import { User } from './models/user.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,7 @@ export class CookieService {
     }
 
     try{
-      const response = await axios.get('http://localhost:1337/users/me', {
+      const response = await axios.get(environment.strapiUrl + '/users/me', {
         headers: {
           Authorization: `Bearer ${jwtBearer}`
         }
@@ -55,7 +56,7 @@ export class CookieService {
     const jwtBearer = this.readCookie('__jwtBearer');
     
     try{
-      const response = await axios.get("http://localhost:1337/users/me", {
+      const response = await axios.get(environment.strapiUrl + "/users/me", {
         headers: {
           Authorization: `Bearer ${jwtBearer}`
         }

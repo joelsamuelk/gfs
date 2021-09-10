@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'src/app/cookie.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 import axios from 'axios';
 
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(email: string, password: string): boolean {
-    axios.post('http://localhost:1337/auth/local', {
+    axios.post(environment.strapiUrl + '/auth/local', {
       identifier: email,
       password,
     })

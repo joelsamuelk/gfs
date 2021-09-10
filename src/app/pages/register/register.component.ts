@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'src/app/cookie.service';
 import { User } from 'src/app/models/user.model';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 import axios from 'axios';
 
@@ -29,7 +30,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(username: string, email: string, password: string): boolean {
-    axios.post('http://localhost:1337/auth/local/register', {
+    axios.post(environment.strapiUrl + '/auth/local/register', {
     username,
     email,
     password,
