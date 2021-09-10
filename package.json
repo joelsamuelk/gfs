@@ -23,7 +23,7 @@
     "@angular/router": "~11.2.6",
     "ag-grid-angular": "^25.3.0",
     "ag-grid-community": "^25.3.0",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "bootstrap": "^4.6.0",
     "jquery": "^3.6.0",
     "raleway-webfont": "^3.0.1",
