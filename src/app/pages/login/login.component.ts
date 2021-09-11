@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'src/app/cookie.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 import axios from 'axios';
 
@@ -20,6 +21,18 @@ export class LoginComponent implements OnInit {
   }
 
   login(email: string, password: string): boolean {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+
     axios.post(environment.strapiUrl + '/auth/local', {
       identifier: email,
       password,
@@ -30,6 +43,10 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['user-profile']);
     })
     .catch(error => {
+      Toast.fire({
+        icon: 'error',
+        title: 'Email or password incorrect'
+      })
       console.log('An error occurred:', error.response);
       return false;
     });

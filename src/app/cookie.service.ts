@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import { User } from './models/user.model';
 import { environment } from 'src/environments/environment';
+import { JitEvaluator } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -55,19 +56,22 @@ export class CookieService {
   async verifyUserNoRedirect(): Promise<User | undefined> {
     const jwtBearer = this.readCookie('__jwtBearer');
     
-    try{
-      const response = await axios.get(environment.strapiUrl + "/users/me", {
-        headers: {
-          Authorization: `Bearer ${jwtBearer}`
-        }
-      });
-      return response.data as User;
+    if(jwtBearer != null)
+    {
+      try{
+        const response = await axios.get(environment.strapiUrl + "/users/me", {
+          headers: {
+            Authorization: `Bearer ${jwtBearer}`
+          }
+        });
+        return response.data as User;
+      }
+      catch(e){
+        //this._router.navigate(['login']);
+        return undefined;
+      }
     }
-    catch(e){
-      console.log("in the catch");
-      //this._router.navigate(['login']);
-      return undefined;
-    }
+    return undefined;
   }
 
   readCookie(name: string) {  
