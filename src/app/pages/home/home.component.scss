@@ -26,3 +26,11 @@
     height:100%;
   }
 }
+
+#contact-us {
+  margin-top: 60px;
+
+  @media (max-width: 991px) {
+    margin-bottom: 30px;
+  }
+}
