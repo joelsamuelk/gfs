@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "gfs-web-app": {
+      "hosting": {
+        "gfs-web-app": [
+          "gfs-web-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "gfs-web-app"
+  }
+}
