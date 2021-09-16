@@ -2,15 +2,14 @@ module.exports = ({ env }) => ({
   defaultConnection: 'default',
   connections: {
     default: {
-      connector: 'firestore',
+      connector: 'bookshelf',
       settings: {
         client: 'sqlite',
         filename: env('DATABASE_FILENAME', '.tmp/data.db'),
-        // projectId: 'gfs-web-app',
       },
       options: {
         useNullAsDefault: true,
-      }
+      },
     },
   },
 });
