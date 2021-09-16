@@ -36,5 +36,12 @@
       "enabled": true,
       "port": 8081
     }
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
   }
 }
