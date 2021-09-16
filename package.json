@@ -33,6 +33,8 @@
     "fs-extra": "^9.1.0",
     "jquery": "^3.6.0",
     "nodemon": "^2.0.12",
+    "pg": "^8.7.1",
+    "pg-connection-string": "^2.5.0",
     "raleway-webfont": "^3.0.1",
     "rxjs": "~6.6.0",
     "strapi-connector-firestore": "^3.0.0-alpha.41",
