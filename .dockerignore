@@ -1,0 +1,10 @@
+.git
+.firebase
+.idea
+.editorConfig
+node_modules
+/e2e
+/gfs-web-app
+.gitignore
+.zip
+.md
