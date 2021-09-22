@@ -3,16 +3,19 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "heroku-postbuild": "ng build --prod",
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.2.6",
     "@angular/cdk": "^11.2.6",
+    "@angular/cli": "~11.2.5",
     "@angular/common": "~11.2.6",
     "@angular/compiler": "~11.2.6",
     "@angular/core": "~11.2.6",
@@ -33,6 +36,7 @@
     "fs-extra": "^9.1.0",
     "jquery": "^3.6.0",
     "nodemon": "^2.0.12",
+    "path": "^0.12.7",
     "pg": "^8.7.1",
     "pg-connection-string": "^2.5.0",
     "raleway-webfont": "^3.0.1",
@@ -42,6 +46,7 @@
     "strapi-utils": "^3.6.8",
     "sweetalert2": "^11.1.5",
     "tslib": "^2.0.0",
+    "typescript": "~4.1.5",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
@@ -70,5 +75,9 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.1.5"
+  },
+  "engines": {
+    "node": "15.14.0",
+    "npm": "7.7.6"
   }
 }
