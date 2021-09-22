@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  strapiUrl: "http://localhost:1337"
+  strapiUrl: "https://gfs-cms.herokuapp.com/"
 };
