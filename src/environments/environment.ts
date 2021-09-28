@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  strapiUrl: "http://localhost:1337"
+  strapiUrl: 'http://localhost:1337'
 };
 /*
  * For easier debugging in development mode, you can import the following file
