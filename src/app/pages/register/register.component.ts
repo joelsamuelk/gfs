@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import Swal from 'sweetalert2';
+
 import { CookieService } from 'src/app/cookie.service';
 import { User } from 'src/app/models/user.model';
-import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import Swal from 'sweetalert2';
 
 import axios from 'axios';
 
@@ -12,22 +14,20 @@ import axios from 'axios';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {  
+export class RegisterComponent implements OnInit {
   user: User | undefined;
 
-  constructor(private cookieService: CookieService, private _router: Router) {
-    
-   }
+  constructor(private cookieService: CookieService, private router: Router) {}
 
   async ngOnInit(): Promise<void> {
     try{
       this.user = await this.cookieService.verifyUserNoRedirect();
-      if(this.user != undefined)
+      if (this.user !== undefined)
       {
-        this._router.navigate(['user-profile']);
+        this.router.navigate(['user-profile']);
       }
     }
-    catch(e){
+    catch (e){
       console.error(e);
     }
   }
@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
         toast.addEventListener('mouseenter', Swal.stopTimer)
         toast.addEventListener('mouseleave', Swal.resumeTimer)
       }
-    })
+    });
 
     axios.post(environment.strapiUrl + '/auth/local/register', {
     username,
@@ -54,16 +54,18 @@ export class RegisterComponent implements OnInit {
     Toast.fire({
       icon: 'success',
       title: 'Registration successful'
-    })
+    });
+
     console.log('User profile', response.data.user);
     console.log('User token', response.data.jwt);
-    this._router.navigate(['login']);
+    this.router.navigate(['login']);
   })
   .catch(error => {
     Toast.fire({
       icon: 'error',
       title: 'Registration failed'
-    })
+    });
+
     console.log('An error occurred:', error.response);
     return false;
   });
