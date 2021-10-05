@@ -64,7 +64,7 @@ export class UserProfileComponent implements OnInit {
       this.user = await this.cookieService.verifyUser();
       this.jwtBearer = this.cookieService.readCookie('__jwtBearer');
 
-      const customer = await axios.get(environment.strapiUrl +'/customers?user.username=' + this.user?.username, {
+      const customer = await axios.get(environment.strapiUrl + '/customers?user.username=' + this.user?.username, {
         headers: {
           Authorization: `Bearer ${this.jwtBearer}`
         }
