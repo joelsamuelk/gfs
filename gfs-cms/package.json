@@ -12,6 +12,7 @@
   "dependencies": {
     "@google-cloud/storage": "^5.14.2",
     "knex": "0.21.18",
+    "pg": "^8.7.1",
     "sqlite3": "^4.2.0",
     "strapi": "^3.1.4",
     "strapi-admin": "^3.6.7",
