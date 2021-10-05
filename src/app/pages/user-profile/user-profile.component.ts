@@ -72,7 +72,7 @@ export class UserProfileComponent implements OnInit {
 
       const documents = await axios.get(environment.strapiUrl + '/documents?customer.user=' + this.user?.id, {
         headers: {
-          Authorization: `Bearer ${this.jwtBearer}`
+          Authorization: `Bearer ${this.jwtBearer}`,
         }
       });
 
