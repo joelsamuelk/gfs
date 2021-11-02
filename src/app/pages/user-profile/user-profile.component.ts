@@ -98,7 +98,7 @@ export class UserProfileComponent implements OnInit {
             Departure: element.Departure,
             Port_Of_Load: element.Port_Of_Load,
             Status: element.Status,
-            Documents: shipmentDocuments
+            Documents: shipmentDocuments || null,
           } as Shipment;
 
           this.Shipments?.push(currentShipment);
