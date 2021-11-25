@@ -34,3 +34,14 @@
     margin-bottom: 30px;
   }
 }
+
+.video-bg {
+  video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+}
