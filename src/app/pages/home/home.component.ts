@@ -9,5 +9,15 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isMobile();
+  }
+
+  isMobile(): boolean {
+    if (window.screen.width < 768) {
+      return true;
+    }
+
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
 }
