@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'src/app/cookie.service';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
-import Swal from 'sweetalert2';
 
+import Swal from 'sweetalert2';
 import axios from 'axios';
+
+import { CookieService } from 'src/app/cookie.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit {
         toast.addEventListener('mouseenter', Swal.stopTimer);
         toast.addEventListener('mouseleave', Swal.resumeTimer);
       }
-    })
+    });
 
     axios.post(environment.strapiUrl + '/auth/local', {
       identifier: email,
@@ -46,7 +47,8 @@ export class LoginComponent implements OnInit {
       Toast.fire({
         icon: 'error',
         title: 'Email or password incorrect'
-      })
+      });
+
       console.log('An error occurred:', error.response);
       return false;
     });
