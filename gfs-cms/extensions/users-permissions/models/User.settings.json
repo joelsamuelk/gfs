@@ -58,6 +58,10 @@
       "via": "users",
       "plugin": "users-permissions",
       "configurable": false
+    },
+    "shipments": {
+      "via": "user",
+      "collection": "shipments"
     }
   }
 }

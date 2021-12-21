@@ -25,9 +25,9 @@
         "Wadi_Group"
       ]
     },
-    "suppliers": {
-      "collection": "shipments",
-      "via": "shipment"
+    "shipments": {
+      "via": "supplier",
+      "collection": "shipments"
     }
   }
 }

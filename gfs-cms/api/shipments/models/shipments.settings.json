@@ -41,13 +41,22 @@
       ],
       "required": true
     },
-    "customers": {
-      "via": "shipments",
-      "collection": "customer"
+    "customer": {
+      "model": "customer",
+      "via": "shipments"
     },
-    "shipment": {
-      "via": "suppliers",
-      "model": "supplier"
+    "supplier": {
+      "model": "supplier",
+      "via": "shipments"
+    },
+    "documents": {
+      "via": "shipment",
+      "collection": "document"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "shipments"
     }
   }
 }

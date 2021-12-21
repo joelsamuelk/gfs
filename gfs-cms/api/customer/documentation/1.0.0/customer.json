@@ -536,6 +536,57 @@
               "Shazzy_Land"
             ]
           },
+          "user": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "shipments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
           "shipments": {
             "type": "array",
             "items": {
@@ -575,13 +626,19 @@
                     "Gated_Out"
                   ]
                 },
-                "customers": {
+                "customer": {
+                  "type": "string"
+                },
+                "supplier": {
+                  "type": "string"
+                },
+                "documents": {
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
                 },
-                "shipment": {
+                "user": {
                   "type": "string"
                 },
                 "published_at": {
@@ -593,51 +650,6 @@
                 "updated_by": {
                   "type": "string"
                 }
-              }
-            }
-          },
-          "user": {
-            "required": [
-              "id",
-              "username",
-              "email"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "username": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "password": {
-                "type": "string"
-              },
-              "resetPasswordToken": {
-                "type": "string"
-              },
-              "confirmationToken": {
-                "type": "string"
-              },
-              "confirmed": {
-                "type": "boolean"
-              },
-              "blocked": {
-                "type": "boolean"
-              },
-              "role": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
               }
             }
           },
@@ -665,14 +677,14 @@
               "Shazzy_Land"
             ]
           },
+          "user": {
+            "type": "string"
+          },
           "shipments": {
             "type": "array",
             "items": {
               "type": "string"
             }
-          },
-          "user": {
-            "type": "string"
           },
           "published_at": {
             "type": "string",

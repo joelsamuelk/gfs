@@ -1,10 +1,8 @@
 FROM node:14.17.0-alpine as build-step
 
-WORKDIR /Users/joel/IdeaProjects/gfs
-RUN mkdir -p /app
-
-COPY package.json .
-COPY package-lock.json .
+WORKDIR /app
+COPY . /app
+RUN rm -rf /app/gfs-cms
 
 RUN npm install
 
@@ -14,7 +12,7 @@ COPY . .
 
 EXPOSE 4200
 
-CMD /Users/joel/IdeaProjects/gfs/node_modules/.bin/ng serve --host 0.0.0.0 --disableHostCheck
+CMD /app/node_modules/.bin/ng serve --host 0.0.0.0 --disableHostCheck
 
 
 #FROM nginx:1.20.1
