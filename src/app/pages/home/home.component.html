@@ -1,8 +1,163 @@
 <app-loader></app-loader>
 
-<div id="video-bg">
-  <video autoplay muted loop *ngIf="!isMobile()">
-    <source src="assets/videos/gfs-home.mp4" type="video/mp4">
-  </video>
-  <img *ngIf="isMobile()" src="assets/images/gfs-web.png" alt="GFS Website under construction">
+<app-top-navigation></app-top-navigation>
+<div class="container-fluid hero">
+  <img src="assets/images/gfs_home_update.jpg" alt="GFS Home">
+  <div class="container">
+    <!-- Hero Title -->
+    <h1 i18n>Welcome to <br>GFS Marketing <br>(Pty) Ltd</h1>
+    <!-- Hero Title Info -->
+    <p class="home-text-container" i18n>
+      Through GFS we help you get fresh produce world-wide, with an ever expanding network, we focus strictly on quality
+      produce and excellent customer service. Putting our expertise and professionalism to meet your needs and requirements
+      whenever called upon is our focus.
+    </p>
+    <div class="hero-btns">
+      <!-- Hero Btn First -->
+      <a data-scroll href="#about-us" i18n>More About us</a>
+      <!-- Hero Btn Second -->
+      <a data-scroll href="#contact-us" i18n>Get in Touch.</a>
+    </div>
+  </div>
 </div>
+<section id="about-us" class="services">
+  <div class="container-fluid">
+    <div class="side-img">
+      <img src="assets/images/aside.svg" alt="">
+    </div>
+    <div class="side2-img">
+      <img src="assets/images/aside2.svg" alt="">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-lg-4 service-txt">
+          <h5 i18n>About Us</h5>
+          <h2 i18n>Customer satisfaction is our modus operandi.</h2>
+          <div class="hero-btns service-btn">
+            <a data-scroll href="#contact-us" i18n>Get in Touch</a>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="service-box">
+            <img src="assets/images/africa.png" alt="GFS SA team">
+            <!-- Service Title -->
+            <h3>GFS<br></h3>
+            <p i18n>is made of a small vibrant  team based in Cape Town - South Africa  who have been working in the industry for over a decade.</p>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="service-box">
+            <img src="assets/images/team.png" alt="GFS SA team">
+            <!-- Service Title -->
+            <h3 i18n>Team GFS</h3>
+            <!-- Service Info -->
+            <p>has an excellent understanding of international Trade and markets and specializes in the fresh produce sector. We dedicate our  time and energy to help you get the best. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO SECTION -->
+<section id="portfolio" class="portfolio">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 i18n>Products</h2>
+          <h5 i18n>We offer you the best</h5>
+          <p i18n>We work with skilled, trusted partners in order to deliver the best and freshest fruit all over the globe.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-lg-4 work-box">
+          <div class="photobox photobox_type10">
+            <img src="assets/images/1.png" class="photobox__preview" alt="Preview">
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 work-box">
+          <div class="photobox photobox_type10">
+            <img src="assets/images/2.png" class="photobox__preview" alt="Preview">
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 work-box">
+          <div class="photobox photobox_type10">
+            <img src="assets/images/3.png" class="photobox__preview" alt="Preview">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-lg-4 work-box">
+          <div class="photobox photobox_type10">
+            <img src="assets/images/4.png" class="photobox__preview" alt="Preview">
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 work-box">
+          <div class="photobox photobox_type10">
+            <img src="assets/images/5.png" class="photobox__preview" alt="Preview">
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 work-box">
+          <div class="photobox photobox_type10">
+            <img src="assets/images/6.png" class="photobox__preview" alt="Preview">
+          </div>
+        </div>
+      </div>
+      <!-- Hidden Images From Portfolio -->
+      <div id="hiden-gallery" class="hide">
+        <div class="row">
+          <div class="col-12 col-lg-4 work-box">
+            <div class="photobox photobox_type10">
+              <img src="assets/images/5.png" class="photobox__preview" alt="Preview">
+            </div>
+          </div>
+          <div class="col-12 col-lg-4 work-box">
+            <div class="photobox photobox_type10">
+              <img src="assets/images/3.png" class="photobox__preview" alt="Preview">
+            </div>
+          </div>
+          <div class="col-12 col-lg-4 work-box">
+            <div class="photobox photobox_type10">
+              <img src="assets/images/1.png" class="photobox__preview" alt="Preview">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact-us" class="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h5 i18n>CONTACT US</h5>
+        <p id="contact-us-channel">
+          <a href="tel:+27215693783">Phone: +27 (0) 21 569 3783</a><br>
+          <a href="mailto:info@gfs.marketing">Email: info@gfs.marketing</a>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-lg-6 email">
+        <input placeholder="Your email" type="email" id="email" pattern=".+@globex.com" size="30" required>
+      </div>
+      <div class="col-12 col-lg-6 email">
+        <input placeholder="Subject" type="text" id="subject" size="30" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 message">
+        <textarea id="message" name="message" rows="5" cols="1" placeholder="Message here..."></textarea>
+      </div>
+      <div class="col-12">
+        <div class="hero-btns contact-btn">
+          <!-- Send Message Btn -->
+          <a href="#" i18n>Send Message</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
