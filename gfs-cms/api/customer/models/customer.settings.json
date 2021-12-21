@@ -26,14 +26,13 @@
       ],
       "required": true
     },
-    "shipments": {
-      "collection": "shipments",
-      "via": "customers",
-      "dominant": true
-    },
     "user": {
       "plugin": "users-permissions",
       "model": "user"
+    },
+    "shipments": {
+      "via": "customer",
+      "collection": "shipments"
     }
   }
 }

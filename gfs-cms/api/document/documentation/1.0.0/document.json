@@ -614,14 +614,14 @@
                   "Shazzy_Land"
                 ]
               },
+              "user": {
+                "type": "string"
+              },
               "shipments": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
-              },
-              "user": {
-                "type": "string"
               },
               "published_at": {
                 "type": "string"
@@ -671,13 +671,19 @@
                   "Gated_Out"
                 ]
               },
-              "customers": {
+              "customer": {
+                "type": "string"
+              },
+              "supplier": {
+                "type": "string"
+              },
+              "documents": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
               },
-              "shipment": {
+              "user": {
                 "type": "string"
               },
               "published_at": {

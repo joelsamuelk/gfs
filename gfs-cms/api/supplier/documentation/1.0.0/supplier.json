@@ -536,7 +536,7 @@
               "Wadi_Group"
             ]
           },
-          "suppliers": {
+          "shipments": {
             "type": "array",
             "items": {
               "required": [
@@ -575,13 +575,19 @@
                     "Gated_Out"
                   ]
                 },
-                "customers": {
+                "customer": {
+                  "type": "string"
+                },
+                "supplier": {
+                  "type": "string"
+                },
+                "documents": {
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
                 },
-                "shipment": {
+                "user": {
                   "type": "string"
                 },
                 "published_at": {
@@ -618,7 +624,7 @@
               "Wadi_Group"
             ]
           },
-          "suppliers": {
+          "shipments": {
             "type": "array",
             "items": {
               "type": "string"
