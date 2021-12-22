@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "shipments",
+  "info": {
+    "name": "shipments",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "vessel": {
+      "type": "string",
+      "required": true
+    },
+    "Port_Of_Load": {
+      "type": "string",
+      "required": true
+    },
+    "Container_No": {
+      "type": "string"
+    },
+    "Departure": {
+      "type": "date",
+      "required": true
+    },
+    "Arrival": {
+      "type": "date",
+      "required": true
+    },
+    "Status": {
+      "type": "enumeration",
+      "enum": [
+        "Loaded",
+        "In_Transit",
+        "Discharged",
+        "Gated_Out",
+        "Cancelled",
+        "Claimed",
+        "Claim_in_Progress"
+      ],
+      "required": true
+    },
+    "Documents": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "Shipping_Line": {
+      "type": "enumeration",
+      "enum": [
+        "MSC",
+        "Maersk",
+        "Niledutch",
+        "Cma_Cgm"
+      ]
+    },
+    "suppliers": {
+      "via": "shipments",
+      "collection": "supplier"
+    },
+    "user": {
+      "via": "shipments",
+      "plugin": "users-permissions",
+      "model": "user"
+    }
+  }
+}
