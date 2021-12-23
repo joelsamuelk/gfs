@@ -711,6 +711,19 @@
                   "type": "string"
                 }
               },
+              "company": {
+                "type": "string",
+                "enum": [
+                  "Tropical_fruits",
+                  "Gfs_sarl_reunion",
+                  "Orange_fraiche",
+                  "Mkm_solution",
+                  "Cao",
+                  "Caudex",
+                  "A_Chinatamby_Co_Ltd",
+                  "Passion_des_fruits"
+                ]
+              },
               "created_by": {
                 "type": "string"
               },
