@@ -41,18 +41,39 @@
       ],
       "required": true
     },
-    "customer": {
-      "model": "customer",
-      "via": "shipments"
-    },
-    "supplier": {
-      "model": "supplier",
-      "via": "shipments"
+    "suppliers": {
+      "collection": "supplier",
+      "via": "shipments",
+      "dominant": true
     },
     "user": {
       "via": "shipments",
       "plugin": "users-permissions",
       "model": "user"
+    },
+    "documents": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "shipping_line": {
+      "type": "enumeration",
+      "enum": [
+        "CMA_CGM",
+        "Maersk",
+        "MSC",
+        "Niledutch"
+      ]
+    },
+    "container_value": {
+      "type": "float"
     }
   }
 }

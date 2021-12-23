@@ -1290,14 +1290,32 @@
                     "Gated_Out"
                   ]
                 },
-                "customer": {
-                  "type": "string"
-                },
-                "supplier": {
-                  "type": "string"
+                "suppliers": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "user": {
                   "type": "string"
+                },
+                "documents": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "shipping_line": {
+                  "type": "string",
+                  "enum": [
+                    "CMA_CGM",
+                    "Maersk",
+                    "MSC",
+                    "Niledutch"
+                  ]
+                },
+                "container_value": {
+                  "type": "number"
                 },
                 "published_at": {
                   "type": "string"

@@ -553,84 +553,45 @@
               "Gated_Out"
             ]
           },
-          "customer": {
-            "required": [
-              "id",
-              "company_name"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "company_name": {
-                "type": "string",
-                "enum": [
-                  "Tropical_fruits",
-                  "Gfs_sarl_reunion",
-                  "Orange_fraiche",
-                  "Mkm_solution",
-                  "Cao",
-                  "Caudex",
-                  "Krysremix",
-                  "Shazzy_Land"
-                ]
-              },
-              "user": {
-                "type": "string"
-              },
-              "shipments": {
-                "type": "array",
-                "items": {
+          "suppliers": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string",
+                  "enum": [
+                    "Dakahlia",
+                    "Idea_Fruit",
+                    "Fruit_secure",
+                    "Fruitways",
+                    "Zest_Fruit",
+                    "Into_asia",
+                    "Jaguar",
+                    "Kalinex_Fruit",
+                    "Wadi_Group"
+                  ]
+                },
+                "shipments": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
                   "type": "string"
                 }
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "supplier": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string",
-                "enum": [
-                  "Dakahlia",
-                  "Idea_Fruit",
-                  "Fruit_secure",
-                  "Fruitways",
-                  "Zest_Fruit",
-                  "Into_asia",
-                  "Jaguar",
-                  "Kalinex_Fruit",
-                  "Wadi_Group"
-                ]
-              },
-              "shipments": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
               }
             }
           },
@@ -698,6 +659,88 @@
               }
             }
           },
+          "documents": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "name",
+                "hash",
+                "mime",
+                "size",
+                "url",
+                "provider"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "alternativeText": {
+                  "type": "string"
+                },
+                "caption": {
+                  "type": "string"
+                },
+                "width": {
+                  "type": "integer"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "formats": {
+                  "type": "object"
+                },
+                "hash": {
+                  "type": "string"
+                },
+                "ext": {
+                  "type": "string"
+                },
+                "mime": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "number"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "previewUrl": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "provider_metadata": {
+                  "type": "object"
+                },
+                "related": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "shipping_line": {
+            "type": "string",
+            "enum": [
+              "CMA_CGM",
+              "Maersk",
+              "MSC",
+              "Niledutch"
+            ]
+          },
+          "container_value": {
+            "type": "number"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -739,14 +782,26 @@
               "Gated_Out"
             ]
           },
-          "customer": {
-            "type": "string"
-          },
-          "supplier": {
-            "type": "string"
+          "suppliers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "user": {
             "type": "string"
+          },
+          "shipping_line": {
+            "type": "string",
+            "enum": [
+              "CMA_CGM",
+              "Maersk",
+              "MSC",
+              "Niledutch"
+            ]
+          },
+          "container_value": {
+            "type": "number"
           },
           "published_at": {
             "type": "string",

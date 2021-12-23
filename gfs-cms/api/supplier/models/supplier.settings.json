@@ -26,7 +26,7 @@
       ]
     },
     "shipments": {
-      "via": "supplier",
+      "via": "suppliers",
       "collection": "shipments"
     }
   }
