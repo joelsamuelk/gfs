@@ -49,10 +49,6 @@
       "model": "supplier",
       "via": "shipments"
     },
-    "documents": {
-      "via": "shipment",
-      "collection": "document"
-    },
     "user": {
       "via": "shipments",
       "plugin": "users-permissions",

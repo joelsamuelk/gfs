@@ -634,40 +634,6 @@
               }
             }
           },
-          "documents": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "documents": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "customer": {
-                  "type": "string"
-                },
-                "shipment": {
-                  "type": "string"
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "user": {
             "required": [
               "id",
@@ -778,12 +744,6 @@
           },
           "supplier": {
             "type": "string"
-          },
-          "documents": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           },
           "user": {
             "type": "string"
