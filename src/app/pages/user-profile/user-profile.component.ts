@@ -95,7 +95,6 @@ export class UserProfileComponent implements OnInit {
       })
       .then((response) => {
         if (response?.data) {
-          console.log('Data: ', response.data);
           this.shipments = response.data;
           this.rowData = response.data;
 
